@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="css/amazeui.flat.min.css"/>
+</head>
+
+<body>
+
+<div class="am-container" style="margin-top:50px">
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd">控制面板</div>
+        <div class="am-panel-bd">
+            <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
+                <ul class="am-tabs-nav am-nav am-nav-tabs">
+                    <li>
+                        <a href="javascript: void(0)">服务端</a>
+                    </li>
+                    <li class="am-active">
+                        <a href="javascript: void(0)">客户端</a>
+                    </li>
+                </ul>
+                <div class="am-tabs-bd">
+                    <div class="am-tab-panel">
+                        <form class="am-form" method="post" action="start">
+                            <fieldset>
+                                <legend>
+                                    <button type="button"
+                                            th:class="${terminated == false ? 'am-btn am-btn-success' : 'am-hide'}">
+                                        Running
+                                    </button>
+                                    <button type="button"
+                                            th:class="${terminated == true ? 'am-btn am-btn-danger' : 'am-hide'}">Not
+                                        Running
+                                    </button>
+                                </legend>
+                                <div class="am-form-group">
+                                    <label for="browserPort">浏览器连接端口</label>
+                                    <input type="text"  id="browserPort" name="browserPort" placeholder="默认 65520"/>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="schedulerPort">调度器连接端口</label>
+                                    <input type="text"  id="schedulerPort" name="schedulerPort" placeholder="默认 65522"/>
+                                </div>
+                                <button th:class="${terminated == true ? 'am-btn am-btn-success' : 'am-hide'}">启动服务器
+                                </button>
+                            </fieldset>
+                        </form>
+                        <form action="stop">
+                            <button th:class="${terminated == false ? 'am-btn am-btn-danger' : 'am-hide'}">停止服务器
+                            </button>
+                        </form>
+                    </div>
+                    <div class="am-tab-panel am-active">
+                        <form class="am-form" method="post" action="startClient">
+                            <fieldset>
+                                <div class="am-form-group">
+                                    <label for="tomcatHost">Tomcat主机地址</label>
+                                    <input type="text" id="tomcatHost" name="tomcatHost" placeholder="默认 localhost"/>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="tomcatPort">Tomcat端口</label>
+                                    <input type="text" id="tomcatPort" name="tomcatPort" placeholder="默认 8080"/>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="serverHost">服务器主机地址</label>
+                                    <input type="text" id="serverHost" name="serverHost" placeholder="默认 localhost"/>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="serverPort">服务器端口</label>
+                                    <input type="text" id="serverPort" name="serverPort" placeholder="默认 65521"/>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="schedulerHost">调度器主机地址</label>
+                                    <input type="text" id="schedulerHost" name="schedulerHost" placeholder="默认 localhost"/>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="schedulerPort">调度器端口</label>
+                                    <input type="text" id="schedulerPort" name="schedulerPort" placeholder="默认 65522"/>
+                                </div>
+                                <button class="am-btn am-btn-default">启动客户端</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/amazeui.min.js"></script>
+
+</html>
